@@ -33,9 +33,12 @@ static const int zero = 0;
 void *( *bson_malloc_func )( size_t ) = malloc;
 void *( *bson_realloc_func )( void *, size_t ) = realloc;
 void  ( *bson_free )( void * ) = free;
-bson_printf_func bson_printf = printf;
-bson_fprintf_func bson_fprintf = fprintf;
-bson_sprintf_func bson_sprintf = sprintf;
+
+#if !defined(BSON_CUSTOM_PRINT_FORMATTER)
+// bson_printf_func bson_printf = printf;
+// bson_fprintf_func bson_fprintf = fprintf;
+// bson_sprintf_func bson_sprintf = sprintf;
+#endif
 
 static int _bson_errprintf( const char *, ... );
 bson_printf_func bson_errprintf = _bson_errprintf;
@@ -369,9 +372,9 @@ bson_type bson_iterator_next( bson_iterator *i ) {
     }
 
     default: {
-        char msg[] = "unknown type: 000000000000";
-        bson_numstr( msg+14, ( unsigned )( i->cur[0] ) );
-        bson_fatal_msg( 0, msg );
+        // char msg[] = "unknown type: 000000000000";
+        // bson_numstr( msg+14, ( unsigned )( i->cur[0] ) );
+        // bson_fatal_msg( 0, msg );
         return (bson_type)0;
     }
     }
