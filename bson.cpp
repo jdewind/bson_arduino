@@ -400,15 +400,19 @@ const char *bson_iterator_value( const bson_iterator *i ) {
 
 /* types */
 
-int bson_iterator_int_raw( const bson_iterator *i ) {
-    int out;
+int32_t bson_iterator_int_raw( const bson_iterator *i ) {
+    int32_t out;
     bson_little_endian32( &out, bson_iterator_value( i ) );
     return out;
 }
 
 double bson_iterator_double_raw( const bson_iterator *i ) {
-    double out;
-    bson_little_endian64( &out, bson_iterator_value( i ) );
+    double out;       
+		if(sizeof(out) == 4) {
+	    bson_little_endian32( &out, bson_iterator_value( i ) );			
+		} else {
+	    bson_little_endian64( &out, bson_iterator_value( i ) );			
+		}
     return out;
 }
 

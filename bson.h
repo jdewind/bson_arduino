@@ -288,7 +288,7 @@ double bson_iterator_double_raw( const bson_iterator *i );
  *
  * @return the value of the current BSON object.
  */
-int bson_iterator_int_raw( const bson_iterator *i );
+int32_t bson_iterator_int_raw( const bson_iterator *i );
 
 /**
  * Get the long value of the BSON object currently pointed to by the
