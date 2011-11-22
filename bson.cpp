@@ -34,11 +34,9 @@ void *( *bson_malloc_func )( size_t ) = malloc;
 void *( *bson_realloc_func )( void *, size_t ) = realloc;
 void  ( *bson_free )( void * ) = free;
 
-#if !defined(BSON_CUSTOM_PRINT_FORMATTER)
-// bson_printf_func bson_printf = printf;
-// bson_fprintf_func bson_fprintf = fprintf;
-// bson_sprintf_func bson_sprintf = sprintf;
-#endif
+bson_printf_func bson_printf = printf;
+bson_fprintf_func bson_fprintf = fprintf;
+bson_sprintf_func bson_sprintf = sprintf;
 
 static int _bson_errprintf( const char *, ... );
 bson_printf_func bson_errprintf = _bson_errprintf;
@@ -983,3 +981,17 @@ void bson_numstr( char *str, int i ) {
     else
         bson_sprintf( str,"%d", i );
 }
+
+void bson_set_printf(int(*printf)(const char *fmt, ...)) {
+	bson_printf = printf;
+}
+
+void bson_set_fprintf(int(*fprintf)(FILE *stream, const char *fmt, ...)) {
+	bson_fprintf = fprintf;
+}
+
+void bson_set_sprintf(int(*sprintf)(char *str, const char *fmt, ...)) {
+	bson_sprintf = sprintf;
+}
+
+

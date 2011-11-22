@@ -977,5 +977,11 @@ void bson_fatal_msg( int ok, const char *msg );
  */
 void bson_builder_error( bson *b );
 
+void bson_set_printf(int(*printf)(const char *fmt, ...));
+
+void bson_set_fprintf(int(*fprintf)(FILE *stream, const char *fmt, ...));
+
+void bson_set_sprintf(int(*sprintf)(char *str, const char *fmt, ...));
+
 MONGO_EXTERN_C_END
 #endif
