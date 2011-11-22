@@ -370,9 +370,8 @@ bson_type bson_iterator_next( bson_iterator *i ) {
     }
 
     default: {
-        // char msg[] = "unknown type: 000000000000";
-        // bson_numstr( msg+14, ( unsigned )( i->cur[0] ) );
-        // bson_fatal_msg( 0, msg );
+        char msg[] = "unknown type: 000000000000";
+        bson_fatal_msg( 0, msg );
         return (bson_type)0;
     }
     }
@@ -969,17 +968,6 @@ void bson_fatal_msg( int ok , const char *msg ) {
 
     bson_errprintf( "error: %s\n" , msg );
     exit( -5 );
-}
-
-
-/* Efficiently copy an integer to a string. */
-extern const char bson_numstrs[1000][4];
-
-void bson_numstr( char *str, int i ) {
-    if( i < 1000 )
-        memcpy( str, bson_numstrs[i], 4 );
-    else
-        bson_sprintf( str,"%d", i );
 }
 
 void bson_set_printf(int(*printf)(const char *fmt, ...)) {
