@@ -411,7 +411,8 @@ double bson_iterator_double_raw( const bson_iterator *i ) {
 		if(sizeof(out) == 4) {
 	    bson_little_endian32( &out, bson_iterator_value( i ) );			
 		} else {
-	    bson_little_endian64( &out, bson_iterator_value( i ) );			
+	    bson_little_endian64( &out, bson_iterator_value( i ) );
+			
 		}
     return out;
 }

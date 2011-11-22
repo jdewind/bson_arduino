@@ -104,8 +104,8 @@ typedef union {
 typedef int64_t bson_date_t; /* milliseconds since epoch UTC */
 
 typedef struct {
-    int i; /* increment */
-    int t; /* time in seconds */
+    int32_t i; /* increment */
+    int32_t t; /* time in seconds */
 } bson_timestamp_t;
 
 /* ----------------------------
