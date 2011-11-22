@@ -173,7 +173,7 @@ void bson_oid_gen( bson_oid_t *oid ) {
     static int incr = 0;
     static int fuzz = 0;
     int i;
-    int t = now();
+    int32_t t = now();
 
     if( oid_inc_func )
         i = oid_inc_func();
