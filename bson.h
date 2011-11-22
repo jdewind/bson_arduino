@@ -627,7 +627,7 @@ int bson_append_new_oid( bson *b, const char *name );
  *
  * @return BSON_OK or BSON_ERROR.
  */
-int bson_append_int( bson *b, const char *name, const int i );
+int bson_append_int( bson *b, const char *name, const int32_t i );
 
 /**
  * Append an long to a bson.

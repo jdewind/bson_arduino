@@ -690,7 +690,7 @@ static int bson_append_estart( bson *b, int type, const char *name, const int da
    BUILDING TYPES
    ------------------------------ */
 
-int bson_append_int( bson *b, const char *name, const int i ) {
+int bson_append_int( bson *b, const char *name, const int32_t i ) {
     if ( bson_append_estart( b, BSON_INT, name, 4 ) == BSON_ERROR )
         return BSON_ERROR;
     bson_append32( b , &i );
